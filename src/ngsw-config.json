@@ -1,0 +1,40 @@
+{
+    "index": "/index.html",
+    "assetGroups": [{
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html"
+        ],
+        "versionedFiles": [
+          "/*.bundle.css",
+          "/*.bundle.js",
+          "/*.chunk.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**"
+        ]
+      }, 
+        "dataGroups": [
+        {
+            "name": "tasks-users-api",
+            "urls": [
+                "https://api.github.com/users/**"
+            ],
+            "cacheConfig": {
+            "strategy": "performance",
+            "maxSize": 100,
+            "maxAge": "30d"
+            }
+        }
+        ]
+    }]
+  }

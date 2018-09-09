@@ -1,0 +1,82 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- <div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="user_avatar" src="{{resData.avatar_url}}">
+</div>
+
+<button type="button" (click)="gethere()">click here</button> -->
+
+
+<body id="fullsingle" class="page-template-page-fullsingle-split">
+
+<div class="fs-split">
+
+	<!-- Image Side -->
+	<div class="split-image">
+      <img alt="user_avatar" src="{{resData.avatar_url}}">    
+  </div>
+  
+
+	<!-- Content Side -->
+	<div class="split-content">
+
+		<div class="split-content-vertically-center">
+		
+			<div class="split-intro">
+				
+				<h1>{{resData.location}}</h1>
+
+				<span class="tagline">{{resData.name}}</span>
+
+			</div>
+
+			<div class="split-bio">
+				
+				<p>{{resData.bio}} <a href="{{resData.blog}}"> know more </a></p>
+
+			</div>
+
+			<div class="split-lists">
+				
+				<div class="split-list">
+
+          <ul>
+						<li>Public Repos: {{resData.public_repos}}</li>
+						<li>Followers: {{resData.followers}}</li>
+						<li>Following: {{resData.following}}</li>
+					</ul>
+
+				</div>
+
+				<div class="split-list">
+
+					<ul>
+						<li>Created: {{resData.created_at | date:'MMM :yyyy'}}</li>
+						<li>Updated: {{resData.updated_at | date:'MMM :yyyy'}}</li>
+						<li>{{resData.email}}</li>
+          </ul>
+
+				</div>
+				
+			</div>
+      <br>
+      <span><i>All info fetched from github api</i></span><br>
+			<div class="split-credit">
+        <p>Template by <a href="https://onepagelove.com">One Page Love</a></p>
+
+				<!-- 
+				To edit this credit you can remove the CC3.0 license for only $5 here: https://onepagelove.com/split 
+				this really helps contribute towards us developing more templates and means the world to me!
+				Cheers, Rob (@robhope)
+				-->
+
+			</div>		
+
+		</div>
+
+	</div>
+
+</div>
+</body>
