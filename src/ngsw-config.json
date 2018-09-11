@@ -27,7 +27,7 @@
         {
             "name": "tasks-users-api",
             "urls": [
-                "https://api.github.com/users/hadley"
+                "https://api.github.com/users/**"
             ],
             "cacheConfig": {
             "strategy": "performance",
