@@ -7,6 +7,6 @@ export class GithubService {
   constructor(public http: Http) { }
 
 getUserDetails(){
- return this.http.get("https://api.github.com/users/BrendanEich").map(res => res.json());
+ return this.http.get("https://api.github.com/users/ModusCreateOrg").map(res => res.json());
 }
 }
