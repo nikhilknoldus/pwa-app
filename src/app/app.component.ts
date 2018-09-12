@@ -29,16 +29,8 @@ export class AppComponent implements OnInit {
       e.preventDefault();
       // Stash the event so it can be triggered later on the button event.
       this.deferredPrompt = e;
+      this.openBanner();
       return false;
-    });
-
-    // button click event to show the promt
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      console.log('display-mode is standalone');
-      alert('standalone');
-    }
-    window.addEventListener('appinstalled', (event) => {
-      alert('installed');
     });
   }
   openBanner() {
