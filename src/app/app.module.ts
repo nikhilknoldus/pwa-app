@@ -4,8 +4,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppComponent } from './app.component';
 import { GithubService } from './github.service';
-import {HttpModule} from "@angular/http"
-import { HttpClientModule } from '@angular/common/http'
+import { HttpModule } from "@angular/http"
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

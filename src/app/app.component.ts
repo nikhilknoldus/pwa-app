@@ -19,42 +19,99 @@ export class AppComponent implements OnInit {
       this.gethere();
     }, 200);
 
-    /**
-     * for banner cusomization start
-     */
 
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener('beforeinstallprompt', function (e) {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
-      console.log('before installed');
       e.preventDefault();
-      // Stash the event so it can be triggered later on the button event.
+      // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
-      this.openBanner();
-      return false;
+
+      showAddToHomeScreen();
+
     });
-  }
-  openBanner() {
-    if (this.deferredPrompt) {
-      this.deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      this.deferredPrompt.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            alert('User accepted the prompt');
-          } else {
-            alert('User dismissed the prompt');
-          }
-          this.deferredPrompt = null;
-        });
+
+    function showAddToHomeScreen() {
+
+      var a2hsBtn = <HTMLElement>document.querySelector(".ad2hs-prompt");
+
+      a2hsBtn.style.display = "flex";
+
+      a2hsBtn.addEventListener("click", addToHomeScreen);
+
     }
+
+    function addToHomeScreen() {
+
+      var a2hsBtn = <HTMLElement>document.querySelector(".ad2hs-prompt");
+
+      // hide our user interface that shows our A2HS button
+      a2hsBtn.style.display = 'none';
+
+      if (this.deferredPrompt) {
+        // Show the prompt
+        this.deferredPrompt.prompt();
+
+        // Wait for the user to respond to the prompt
+        this.deferredPrompt.userChoice
+          .then(function (choiceResult) {
+
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+
+            this.deferredPrompt = null;
+
+          });
+
+      }
+
+    }
+
+    showAddToHomeScreen();
+
+    window.addEventListener('appinstalled', function (evt) {
+      console.log('a2hs', 'installed');
+    });
+
+
+
+
   }
+  public gethere() {
+    this.githubService.getUserDetails().subscribe(val => this.resData = val);
+  }
+
+  /**
+   * for banner cusomization start
+   */
+  //   window.addEventListener('beforeinstallprompt', (e) => {
+  //     // Prevent Chrome 67 and earlier from automatically showing the prompt
+  //     console.log('before installed');
+  //     e.preventDefault();
+  //     // Stash the event so it can be triggered later on the button event.
+  //     this.deferredPrompt = e;
+  //     this.openBanner();
+  //     return false;
+  //   });
+  // }
+  // openBanner() {
+  //   if (this.deferredPrompt) {
+  //     this.deferredPrompt.prompt();
+  //     // Wait for the user to respond to the prompt
+  //     this.deferredPrompt.userChoice
+  //       .then((choiceResult) => {
+  //         if (choiceResult.outcome === 'accepted') {
+  //           alert('User accepted the prompt');
+  //         } else {
+  //           alert('User dismissed the prompt');
+  //         }
+  //         this.deferredPrompt = null;
+  //       });
+  //   }
+  // }
   /**
    * Banner customization end
    */
-
-
-
-  gethere() {
-    this.githubService.getUserDetails().subscribe(val => this.resData = val);
-  }
 }
