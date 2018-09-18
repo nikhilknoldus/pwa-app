@@ -41,12 +41,13 @@ export class AppComponent implements OnInit {
         // hide our user interface that shows our A2HS button
         a2hsBtn.style.display = 'none';
   
+        alert("before deferrerdPrompt if")
         if (this.deferredPrompt) {
           // Show the prompt
           alert("before prompt")
           this.deferredPrompt.prompt();
           alert("after prompt")
-  
+          
           // Wait for the user to respond to the prompt
           this.deferredPrompt.userChoice
             .then(function (choiceResult) {
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit {
               this.deferredPrompt = null;
             });
          }
+         alert("outside if condition")
       });
     }
 
