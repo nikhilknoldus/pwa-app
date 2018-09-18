@@ -28,8 +28,10 @@ export class AppComponent implements OnInit {
       // showAddToHomeScreen();
       return false;
     });
+  }
 
-    function showAddToHomeScreen() {
+    showAddToHomeScreen() {
+      alert("called")
       var a2hsBtn = <HTMLElement>document.querySelector(".ad2hs-prompt");
       a2hsBtn.style.display = "flex";
       a2hsBtn.addEventListener("click", () => {
@@ -60,12 +62,12 @@ export class AppComponent implements OnInit {
     }
 
 
-    window.addEventListener('appinstalled', function (evt) {
-      alert('installed');
-    });
+    // window.addEventListener('appinstalled', function (evt) {
+    //   alert('installed');
+    // });
 
 
-  }
+  
   public gethere() {
     this.githubService.getUserDetails().subscribe(val => this.resData = val);
   }
