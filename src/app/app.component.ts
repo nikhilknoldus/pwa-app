@@ -25,12 +25,9 @@ export class AppComponent implements OnInit {
       e.preventDefault();
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
-      showAddToHomeScreen();
+      // showAddToHomeScreen();
       return false;
-
     });
-
-
 
     function showAddToHomeScreen() {
       var a2hsBtn = <HTMLElement>document.querySelector(".ad2hs-prompt");
@@ -44,16 +41,17 @@ export class AppComponent implements OnInit {
   
         if (this.deferredPrompt) {
           // Show the prompt
+          alert("before prompt")
           this.deferredPrompt.prompt();
+          alert("after prompt")
   
           // Wait for the user to respond to the prompt
           this.deferredPrompt.userChoice
             .then(function (choiceResult) {
-  
               if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the A2HS prompt');
+                alert('User accepted the A2HS prompt');
               } else {
-                console.log('User dismissed the A2HS prompt');
+                alert('User dismissed the A2HS prompt');
               }
               this.deferredPrompt = null;
             });
@@ -61,9 +59,9 @@ export class AppComponent implements OnInit {
       });
     }
 
-    
+
     window.addEventListener('appinstalled', function (evt) {
-      console.log('a2hs', 'installed');
+      alert('installed');
     });
 
 
