@@ -20,10 +20,14 @@ export class AppComponent implements OnInit {
     }, 200);
 
   
-    window.addEventListener('beforeinstallprompt', function (e) {
+    window.addEventListener('beforeinstallprompt', function (e:Event) {
       alert("asdf");
       // Prevent Chrome 67 and earlier from automatically showing the prompt
+      
+      alert("before e: "+ e)
       e.preventDefault();
+      alert("after e: "+ e)
+
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
       alert("deffered value"+ this.defferedPrompt);
