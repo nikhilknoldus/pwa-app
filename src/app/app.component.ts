@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     }, 200);
 
   
+    var that = this;
+
     window.addEventListener('beforeinstallprompt', function (e:Event) {
       alert("asdf");
       // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -29,7 +31,7 @@ export class AppComponent implements OnInit {
       alert("after e: "+ e)
 
       // Stash the event so it can be triggered later.
-      this.deferredPrompt = e;
+      that.deferredPrompt = e;
       alert("deffered value"+ this.defferedPrompt);
       // showAddToHomeScreen();
       // this.openBanner();
@@ -54,13 +56,13 @@ export class AppComponent implements OnInit {
   // }
 
     showAddToHomeScreen() {
-      alert("called")
+      alert("1 called")
       let _local = this;
       var a2hsBtn = <HTMLElement>document.querySelector(".ad2hs-prompt");
       a2hsBtn.style.display = "flex";
       a2hsBtn.addEventListener("click", () => {
 
-        alert("called")
+        alert("2 called")
         var a2hsBtn = <HTMLElement>document.querySelector(".ad2hs-prompt");
         // hide our user interface that shows our A2HS button
         a2hsBtn.style.display = 'none';
